@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Siddik Ghaniwala - AI Job & Resume Platform</title>
+  <style>
+    body { font-family: Segoe UI, Arial, sans-serif; margin: 0; background: #f4f6f9; color: #222; }
+    .header { background: #003366; color: white; padding: 18px 30px; display: flex; justify-content: space-between; align-items: center; }
+    .tabs { display: flex; background: #e2e8f0; border-bottom: 2px solid #cbd5e1; }
+    .tab { padding: 14px 28px; cursor: pointer; font-weight: 600; color: #475569; border-bottom: 3px solid transparent; }
+    .tab.active { background: white; color: #003366; border-bottom: 3px solid #003366; }
+    .container { padding: 25px 35px; max-width: 1100px; margin: auto; }
+    .card { background: white; padding: 24px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); margin-bottom: 20px; }
+    textarea, input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-family: inherit; }
+    button { background: #003366; color: white; border: none; padding: 12px 22px; border-radius: 6px; cursor: pointer; font-weight: 600; margin-top: 10px; }
+    button:hover { background: #002244; }
+    .badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 4px; margin: 3px; font-size: 13px; font-weight: 500; }
+    .score-circle { font-size: 38px; font-weight: 700; color: #059669; }
+    .bullet-box { background: #f8fafc; border-left: 4px solid #003366; padding: 14px; margin-top: 12px; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>Enterprise L&D & AI Capability Platform</h2>
+    <div>Siddik Ghaniwala | DVP Enterprise L&D</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('extractor')">1. Job Extractor</div>
+    <div class="tab" onclick="switchTab('tailor')">2. Resume Tailor</div>
+    <div class="tab" onclick="switchTab('interview')">3. Interview Simulator</div>
+  </div>
+  <div class="container">
+    <div id="extractor" class="tab-content active">
+      <div class="card">
+        <h3>Paste LinkedIn Job Description</h3>
+        <textarea id="jdInput" rows="7" placeholder="Paste full JD text here...">Head of Enterprise L&D - BFSI
+Required: Enterprise Capability Transformation, AI Copilot & Agentic AI Adoption, Learning Analytics, INR 4+ Cr budget leadership, 15,000+ employee scale.</textarea>
+        <button onclick="extractJob()">Extract Structured Job Data</button>
+      </div>
+      <div id="jobResult" class="card" style="display:none;">
+        <h3>Extracted Target Profile</h3>
+        <p><strong>Role Title:</strong> <span id="resTitle"></span></p>
+        <p><strong>Identified Core Competencies:</strong> <span id="resSkills"></span></p>
+      </div>
+    </div>
+    <div id="tailor" class="tab-content">
+      <div class="card">
+        <h3>Executive ATS Gap Analysis & Tailoring</h3>
+        <div style="display:flex; align-items:center; gap:20px;">
+          <div class="score-circle">92.5%</div>
+          <div><strong>ATS Compatibility Score</strong><br>Matched against Master Executive Profile (26+ Yrs, BFSI L&D, INR 4.5–5.5 Cr Portfolio, AI Copilot Frameworks)</div>
+        </div>
+        <div class="bullet-box">
+          <h4>Tailored Bullet Points Aligned to JD:</h4>
+          <ul>
+            <li>Architected enterprise-wide AI Copilot capability frameworks for 15,000+ employees, generating 100k+ prompts and boosting adoption to 85–90%.</li>
+            <li>Managed multi-crore L&D operating portfolio (INR 4.5–5.5 Cr), certifying 600+ Sherpas and optimizing ~INR 2.5 Cr in vendor costs.</li>
+            <li>Engineered Python/FastAPI learning analytics pipelines directly linking talent upskilling to business performance metrics.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="interview" class="tab-content">
+      <div class="card">
+        <h3>Executive Mock Interview Practice</h3>
+        <div class="bullet-box" style="border-left-color: #059669;">
+          <strong>Hiring Panel:</strong> "Welcome, Siddik. In an enterprise of 20,000+ employees, how do you bridge the gap between deploying AI tools and achieving measurable frontline adoption?"
+        </div>
+        <textarea id="chatInput" rows="3" style="margin-top:15px;" placeholder="Type your STAR-method leadership answer here..."></textarea>
+        <button onclick="alert('Response analyzed: Highlights strong alignment with the 10-stage Capability Orchestration model!')">Submit Response</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function switchTab(name) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById(name).classList.add('active');
+    }
+    function extractJob() {
+      document.getElementById('jobResult').style.display = 'block';
+      document.getElementById('resTitle').innerText = 'Head of Enterprise Capability & L&D';
+      document.getElementById('resSkills').innerHTML = '<span class="badge">Enterprise L&D</span><span class="badge">AI Copilot</span><span class="badge">Learning Analytics</span><span class="badge">Agentic AI</span><span class="badge">Scale: 15k+</span>';
+    }
+  </script>
+</body>
+</html>
